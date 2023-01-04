@@ -1,0 +1,19 @@
+version: "3.5"
+services:  
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes: 
+      - ./logs:/usr/src/app/logs
+    env_file:
+      - .env
+    entrypoint: /usr/src/app/entrypoint.sh
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"    
+       
+
